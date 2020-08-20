@@ -9,7 +9,7 @@
 	the changes you made in your code.
 ]]--
 
-filesystem.doFile("/lib/liveProgram.lua")
+filesystem.doFile("liveProgram.lua")
 
 runProgramLive("/examples/liveUpdatingProgram/program.lua")
 

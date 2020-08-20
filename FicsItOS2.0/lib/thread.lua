@@ -1,4 +1,4 @@
-thread = {
+local thread = {
 	threads = {},
 	current = 1
 }
@@ -29,7 +29,12 @@ function thread.run()
 			thread.current = 1
 		end
 		
-		coroutine.resume(true, thread.threads[thread.current].co)
+		local ok, msg = coroutine.resume(true, thread.threads[thread.current].co)
+		if not ok then
+			error(debug.traceback(thread.threads[thread.current].co, msg))
+		end
 		thread.current = thread.current + 1
 	end
 end
+
+return thread
